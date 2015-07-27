@@ -28,7 +28,7 @@ class HTMLConverter(object):
 		return " ".join(words)
 	
 	def convert(self,xFile):
-		htmlFile = xFile.replace("files/","error/").replace("pdf","html")
+		htmlFile = xFile.replace("files/","files/html/").replace("pdf","html")
 		command = subprocess.Popen(["pdf2txt.py","-o",htmlFile,xFile], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 		command.communicate()
 

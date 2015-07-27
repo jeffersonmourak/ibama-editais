@@ -47,13 +47,13 @@ class Finder(object):
 		for info in value:
 			data = []
 			for File in self.downloaded:
-				page = self.findInFile(File,info)
-				print "finding " + info + " in " + File
-				print str(page)
-				if page > -1:
-					data.append({"file" : File,"page": page})
-					self.writeFile(info,data)
+				for keyword in info["keywords"]:
+					page = self.findInFile(File,keyword)
+					print "finding the client" + info["name"] + " in " + File
+					if page > -1:
+						data.append({"file" : File,"page": page})
+						self.writeFile(info["name"],data)
 
 finder = Finder()
 
-finder.find(["IBAMA","PREFEITURA","JOSÉ"])
+finder.find([{"name":"ibama","keywords":["ibama","MINISTERIO DO MEIO AMBIENTE"]}])
